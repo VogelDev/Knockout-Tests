@@ -1,0 +1,32 @@
+.hit {
+  padding-bottom: 5px;
+}
+
+.person_title {
+  color: #F3F4F5;
+  /*background-color: #91002B;*/
+}
+
+.theme_blue {
+  background-color: blue;
+}
+
+.theme_orange {
+  background-color: orange;
+}
+
+.theme_OrangeRed {
+  background-color: OrangeRed;
+}
+
+.theme_Peru {
+  background-color: Peru;
+}
+
+.theme_olive {
+  background-color: olive;
+}
+
+.theme_MediumVioletRed {
+  background-color: MediumVioletRed ;
+}

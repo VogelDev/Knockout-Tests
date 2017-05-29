@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Knockout Ajax Test</title>
+  <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme-3.3.7.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery-3.2.0.min.js"></script>
+  <script src="js/knockout-3.4.2.min.js"></script>
+  <script src="js/bootstrap-3.3.7.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6">
+    <ul data-bind="foreach: people,css:list">
+      <main class="hit">
+        <div class="hit-body">
+          <div class="person_title" data-bind="css: 'theme_'+theme">
+            <span data-bind="text: FIRST_NAME + ' ' + LAST_NAME"></span>
+          </div>
+          <div class="person_info">
+            <span data-bind="text: TITLE"></span><br/>
+            <span data-bind="text: PHONE"></span><br/>
+            <span data-bind="text: EMAIL"></span>
+          </div>
+        </div>
+      </main>
+    </ul>
+  </div>
+  </div>
+</div>
+
+
+
+
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
