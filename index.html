@@ -6,6 +6,7 @@
   <title>Knockout Ajax Test</title>
   <link href="css/bootstrap-3.3.7.min.css" rel="stylesheet">
   <link href="css/bootstrap-theme-3.3.7.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link href="css/style.css" rel="stylesheet">
   <script src="js/jquery-3.2.0.min.js"></script>
   <script src="js/knockout-3.4.2.min.js"></script>
@@ -68,7 +69,7 @@
             <div class="form-group">
               <label class="control-label col-sm-2" for="saveButton"></label>
               <div class="text-right col-sm-10">
-                <button type="button" id="saveButton" name="saveButton" class="btn btn-primary" aria-label="">Save All</button>
+                <button data-bind="click:saveAll" type="button" id="saveButton" name="saveButton" class="btn btn-primary" aria-label="">Save All</button>
                 <p class="help-block">Save All Changes</p>
               </div>
             </div>
@@ -89,14 +90,12 @@
                 <span data-bind="text: EMAIL"></span>
               </div>
             </div>
+            <i data-bind="click:function(event){$parent.remove(ID)}" class="red fa fa-minus-circle" aria-hidden="true"></i>
           </main>
         </ul>
       </div>
     </div>
   </div>
-
-
-
 
   <script src="js/scripts.js"></script>
 </body>

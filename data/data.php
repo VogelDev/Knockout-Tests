@@ -1,9 +1,7 @@
 <?php
 
-$servername = "localhost";
-$database = "ko_person";
-$username = "ko_person";
-$password = "9r9N0qamtW1b";
+
+require_once('db.php');
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database;charset=utf8", $username, $password);

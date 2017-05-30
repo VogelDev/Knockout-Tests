@@ -12,13 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
       for($x = 0; $x <= 0; $x++){
 
-        $firstName = $data[$x]->FIRST_NAME;
-        $lastName = $data[$x]->LAST_NAME;
-        $email = $data[$x]->EMAIL;
-        $phone = $data[$x]->PHONE;
-        $title = $data[$x]->TITLE;
+        $id = $data[$x];
 
-        $sql .= "INSERT INTO PEOPLE (FIRST_NAME, LAST_NAME,PHONE,EMAIL,TITLE) VALUES ('$firstName','$lastName','$phone','$email','$title')";
+        $sql .= "DELETE FROM PEOPLE WHERE ID = $id";
       }
       $conn->query($sql);
 
@@ -26,6 +22,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       //echo "Connection failed: " . $e->getMessage();
       echo '{"error":"true","message":"Something went wrong retrieving the data"}';
   }
-
 
 }

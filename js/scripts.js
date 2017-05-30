@@ -3,25 +3,36 @@ $(document).ready(function() {
     var themes = ["blue", "orange", "OrangeRed", "Peru", "olive", "MediumVioletRed"]
     for (var i = 0; i < data.length; i++) {
       data[i].theme = themes[Math.floor(Math.random() * themes.length)];
+			//data[i].ID = generateUUID();
     }
     //viewModel.people(data.people);
     viewModel.people(data);
   });
 });
 
+function generateUUID() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+};
+
 var ContactListModel = function() {
 	var self = this;
-  this.personToAdd = ko.observable("");
-  this.people = ko.observableArray([]);
-  this.selectedItems = ko.observableArray("");
+  self.personToAdd = ko.observable("");
+  self.people = ko.observableArray([]);
+  self.selectedItems = ko.observableArray("");
 
-  this.peopleToAdd = ko.observableArray("");
-  this.peopleToRemove = ko.observableArray("");
+  self.peopleToAdd = ko.observableArray("");
+  self.peopleToRemove = ko.observableArray("");
 
-  this.addContact = function() {
+  self.addContact = function() {
 
     var person = {
-			ID:					self.people().length + 1,
+			ID:					generateUUID(),
       FIRST_NAME: $("#firstNameInput").val(),
       LAST_NAME: 	$("#lastNameInput").val(),
       TITLE: 			$("#titleInput").val(),
@@ -30,7 +41,8 @@ var ContactListModel = function() {
 			theme:      "OrangeRed"
     }
 
-		this.people.push(person);
+		self.people.push(person);
+		self.peopleToAdd.push(person);
 
 		$("#firstNameInput").val(""),
 		$("#lastNameInput").val(""),
@@ -40,8 +52,32 @@ var ContactListModel = function() {
 
   }
 
-	this.saveAll = function(){
-		$.post("data/save.php", person);
+	self.saveAll = function(){
+
+		if(self.peopleToAdd().length > 0){
+			$.post("data/save.php", JSON.stringify(self.peopleToAdd()));
+			self.peopleToAdd = ko.observableArray("");
+		}
+
+		if(self.peopleToRemove().length > 0){
+			$.post("data/remove.php", JSON.stringify(self.peopleToRemove()));
+			self.peopleToRemove = ko.observableArray("");
+		}
+	}
+
+	self.remove = function(guid){
+		if(guid){
+			self.people.remove(function(person){
+				return person.ID == guid;
+			});
+			self.peopleToAdd.remove(function(person){
+				return person.ID == guid;
+			});
+			// if guid is numeric, we can assume it's already in the db
+			if($.isNumeric(guid)){
+				self.peopleToRemove.push(guid);
+			}
+		}
 	}
 
 }
