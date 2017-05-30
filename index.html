@@ -13,27 +13,87 @@
 </head>
 
 <body>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6"></div>
-    <div class="col-sm-6">
-    <ul data-bind="foreach: people,css:list">
-      <main class="hit">
-        <div class="hit-body">
-          <div class="person_title" data-bind="css: 'theme_'+theme">
-            <span data-bind="text: FIRST_NAME + ' ' + LAST_NAME"></span>
-          </div>
-          <div class="person_info">
-            <span data-bind="text: TITLE"></span><br/>
-            <span data-bind="text: PHONE"></span><br/>
-            <span data-bind="text: EMAIL"></span>
-          </div>
-        </div>
-      </main>
-    </ul>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <form class="form-horizontal">
+          <fieldset>
+
+
+            <!-- Form Name -->
+            <legend>Contact List</legend>
+
+            <div class="form-group">
+              <label for="firstNameInput" class="control-label col-sm-2"></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstNameInput" placeholder="First Name">
+                <p class="help-block">First Name</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lastNameInput" class="control-label col-sm-2"></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name">
+                <p class="help-block">Last Name</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="titleInput" class="control-label col-sm-2"></label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="titleInput" placeholder="Title">
+                <p class="help-block">Title</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phoneInput" class="control-label col-sm-2"></label>
+              <div class="col-sm-10">
+                <input type="tel" class="form-control" id="phoneInput" placeholder="Phone Number">
+                <p class="help-block">Phone Number</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="emailInput" class="control-label col-sm-2"></label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="emailInput" placeholder="Email">
+                <p class="help-block">Email</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="addPersonButton"></label>
+              <div class="text-right col-sm-10">
+                <button data-bind="click:addContact" type="button" id="addPersonButton" name="addPersonButton" class="btn btn-primary" aria-label="">Add</button>
+                <p class="help-block">Add Person</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="saveButton"></label>
+              <div class="text-right col-sm-10">
+                <button type="button" id="saveButton" name="saveButton" class="btn btn-primary" aria-label="">Save All</button>
+                <p class="help-block">Save All Changes</p>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+      </div>
+      <div class="col-sm-6">
+        <ul data-bind="foreach: people">
+          <main class="hit">
+            <div class="hit-body">
+              <div class="person_title" data-bind="css: 'theme_'+theme">
+                <span data-bind="text: FIRST_NAME + ' ' + LAST_NAME"></span>
+              </div>
+              <div class="person_info">
+                <span data-bind="text: TITLE"></span><br/>
+                <span data-bind="text: PHONE"></span><br/>
+                <span data-bind="text: EMAIL"></span>
+              </div>
+            </div>
+          </main>
+        </ul>
+      </div>
+    </div>
   </div>
-  </div>
-</div>
 
 
 
